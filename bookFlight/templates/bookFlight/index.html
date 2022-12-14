@@ -1,0 +1,17 @@
+{% extends 'bookFlight/layout.html' %}
+
+{% block title %}
+    List of flights 
+{% endblock %}
+
+{% block body %}
+
+    {% if message %}
+        <h1 style="color: red">{{ message }}</h1>
+    {% endif %}
+
+    {% for flight in flights %}
+        <li><a href="{% url 'flight' flight.id %}">{{ flight.origin }} to {{ flight.destination }} </a></li>
+    {% endfor %}
+
+{% endblock %}

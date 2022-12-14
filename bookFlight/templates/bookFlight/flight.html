@@ -1,0 +1,41 @@
+{% extends 'bookFlight/layout.html' %}
+
+{% block title %}
+    flight {{ flight.id }} page
+{% endblock %}
+
+{% block body %}
+
+{% if message %}
+    <h1 style="color: red">{{ message  }}</h1>
+{% endif %}
+
+<h1>Flight {{ flight.id }}</h1>
+<hr>
+<br>
+
+<p> Origin:- <b> {{ flight.origin }} </b></p>
+<p> Destination :- <b>{{ flight.destination }}</b> </p>
+<p> Duration:- <b>{{ flight.duration }} minutes </b></p>
+
+<br> 
+<h1>Passengers list :- </h1>
+
+{% for passenger in passengers %}
+    <li>{{ passenger.first_name }} {{ passenger.last_name }}</li>
+{% endfor %}
+
+<br>
+<hr>
+<h1>Non-passengers list :- </h1>
+ <form method="post" action="{% url 'book' flight.id %}">
+     <select >
+         
+     </select>
+ </form>
+
+
+<a href="{% url 'index' %}">home page</a>
+
+{% endblock %}
+
